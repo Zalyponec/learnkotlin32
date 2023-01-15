@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 KEY_DESCRIPTION to "desc334"
             )
 
+
         )
 
         val adapter = SimpleAdapter(
