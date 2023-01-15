@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         main = ActivityMainBinding.inflate(layoutInflater)
         setContentView(main.root)
         setuplistView()
+        var testgit = 0
 
     }
 
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             mapOf(
                 KEY_TITLE to "Third",
                 KEY_DESCRIPTION to "desc3"
+            ),
+            mapOf(
+                KEY_TITLE to "Third56789",
+                KEY_DESCRIPTION to "desc334"
             )
 
         )
