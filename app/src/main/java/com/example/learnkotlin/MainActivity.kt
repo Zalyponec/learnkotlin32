@@ -3,59 +3,42 @@ package com.example.learnkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SimpleAdapter
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.learnkotlin.databinding.ActivityMainBinding
+import com.example.learnkotlin.viewmodel.mainviewmodel
 
 private lateinit var main : ActivityMainBinding
+private lateinit var viewModel: mainviewmodel
 
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         main = ActivityMainBinding.inflate(layoutInflater)
         setContentView(main.root)
-        setuplistView()
-        var testgit = 0
+        viewModel = ViewModelProvider(this).get(mainviewmodel::class.java)
+
+
 
     }
 
-    private fun setuplistView() {
-        val data: List<Map<String, String>> = listOf(
-            mapOf(
-                KEY_TITLE to "First",
-                KEY_DESCRIPTION to "desc1"
-            ),
-            mapOf(
-                KEY_TITLE to "Second",
-                KEY_DESCRIPTION to "desc2"
-            ),
-            mapOf(
-                KEY_TITLE to "Third",
-                KEY_DESCRIPTION to "desc3"
-            ),
-            mapOf(
-                KEY_TITLE to "Third56789",
-                KEY_DESCRIPTION to "desc334"
-            )
+    override fun onStart() {
 
-
-        )
-
-        val adapter = SimpleAdapter(
-            this,
-            data,
-            android.R.layout.simple_list_item_2,
-            arrayOf(KEY_TITLE,KEY_DESCRIPTION),
-            intArrayOf(android.R.id.text1,android.R.id.text2)
-        )
-        main.listview.adapter = adapter
+        super.onStart()
+        viewModel.timer()
+        viewModel.liveData.observe(this, Observer {
+            main.textview.text = it
+        })
     }
-
-    companion object {
-        @JvmStatic val KEY_TITLE = "TITLE"
-        @JvmStatic val KEY_DESCRIPTION = "DESCRIPTION"
 
     }
 
 
-}
+
+
+
