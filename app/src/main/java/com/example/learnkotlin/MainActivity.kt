@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
         }
 
 //        //viewModel = ViewModelProvider(this, mainviewmodelfactory(application,"Siuuuuuuuu")).get(mainviewmodel::class.java)
