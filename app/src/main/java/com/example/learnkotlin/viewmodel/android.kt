@@ -10,9 +10,6 @@ import androidx.lifecycle.ViewModel
 class androidView(private val application: Application, val text: String): AndroidViewModel(application) {
 
     var liveData = MutableLiveData<String>()
-
-
-
     fun timer()  {
         object : CountDownTimer(5000, 1000){
             override fun onTick(millisUntilFinished: Long) {
